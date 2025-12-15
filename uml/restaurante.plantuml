@@ -1,0 +1,59 @@
+@startuml Restaurante 
+
+class Restarante {
+    String name
+    String address
+}
+
+class Tabla {
+    Integer tableNumber
+    Integer capacity
+    Boolean isOccuppied
+
+}
+
+class MenuItem {
+    String name
+    Double price 
+}
+
+class OrderItem {
+    Integer quantity
+}
+
+class Oder {
+    Integer orderNumber
+    status 
+}
+
+enum OrderStatus {
+    PENDING
+    IN_PROGRESS
+    DELIVERED
+}
+
+class Menu {
+    String name
+}
+
+class Employee {
+    String name 
+
+    Employee(String name)
+    String getName()
+}
+
+'  Relaciones
+' o-- es Agregacion 
+' *-- : Composicion 
+' -- : Asociacion 
+Restaurante "1" o-- "1..*" Table 
+Restarante  "1" o-- "2..50" Employee
+Restaurante "1" *-- "1..*" Menu 
+Table "1" -- "0..*" Order
+Menu "1" *-- "1..*" MenuItem : menuItems
+MenuItem "1" -- "0..*" OrderItem
+Order "1" *-- "1..*" OrderItem
+Order --> OrderStatus : status
+
+@enduml
