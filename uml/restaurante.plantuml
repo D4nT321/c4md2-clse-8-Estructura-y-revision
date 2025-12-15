@@ -1,8 +1,9 @@
 @startuml Restaurante 
+skinparam ClassAttributeIconSize 0 
 
 class Restarante {
-    String name
-    String address
+    - String name
+    - String address
 }
 
 class Tabla {
@@ -37,10 +38,10 @@ class Menu {
 }
 
 class Employee {
-    String name 
+    - String name 
 
-    Employee(String name)
-    String getName()
+    + Employee(String name)
+    + String getName()
 }
 
 '  Relaciones
@@ -51,7 +52,7 @@ Restaurante "1" o-- "1..*" Table
 Restarante  "1" o-- "2..50" Employee
 Restaurante "1" *-- "1..*" Menu 
 Table "1" -- "0..*" Order
-Menu "1" *-- "1..*" MenuItem : menuItems
+Menu "1" *-- "1" MenuItem : menuItems
 MenuItem "1" -- "0..*" OrderItem
 Order "1" *-- "1..*" OrderItem
 Order --> OrderStatus : status
