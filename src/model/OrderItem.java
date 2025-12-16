@@ -1,26 +1,34 @@
 package model;
 
 public class OrderItem {
-    private Order order; 
+    private Order order;
     private MenuItem menuItem;
     private Integer quantity;
 
-
-    public OrderItem(Order order, MenuItem menuItem) {
+     public OrderItem(Order order, MenuItem menuItem) {
         this(order, menuItem, 1);
     }
 
-    public OrderItem(Order order, MenuItem menuItem, Integer quantity) {
+     public OrderItem(Order order, MenuItem menuItem, Integer quantity) {
         this.order = order;
         this.menuItem = menuItem;
         this.quantity = quantity;
     }
+    //se agrega estas dos lineas para poder obtener la orden del pedido
+    public OrderItem(MenuItem menuItem, Integer quantity) { 
+        this(null, menuItem, quantity);
+    }
+    //se agrega estas dos lineas para poder obtener la orden del pedido
+    public OrderItem(MenuItem menuItem, int quantity) {
+        this(null, menuItem, Integer.valueOf(quantity));
+    }
+
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-     public Integer getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
@@ -33,7 +41,6 @@ public class OrderItem {
     }
 
     public Double calculateSubtotal() {
-        return menuItem.getPrice() *quantity; 
+        return menuItem.getPrice() * quantity;
     }
-
 }
