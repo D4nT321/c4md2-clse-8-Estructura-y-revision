@@ -66,7 +66,7 @@ public class Order {
              for (int i = 0; i < orderItems.length; i++) {
                 if(orderItems[i] != null) {
                     var item = orderItems[i];
-                    System.out.printf("Nombre: %s, Cantidad: %d, Subtotal: $ %,.2f%",
+                    System.out.printf("Nombre: %s, Cantidad: %d, Subtotal: $ %,.2f%n",
                         item.getMenuItem().getName(),
                         item.getQuantity(),
                         item.calculateSubtotal()
